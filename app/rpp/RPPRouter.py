@@ -4,4 +4,4 @@ from app.rpp.RPPController import RPPController
 @app.route('/scrapping/rpp')
 def rpp():
     controller = RPPController()
-    return 'RPP'
+    return controller.get_articles()
