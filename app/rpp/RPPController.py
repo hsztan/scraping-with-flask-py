@@ -46,7 +46,10 @@ class RPPController:
             response = get(article_url)
             if response.status_code == 200:
                 soup_image = BeautifulSoup(response.content, 'html.parser')
-                img = soup_image.find('div', {'class':'cover'}).find('img').get('src')
+                picture = soup_image.find('div', {'class':'cover'})
+                if picture:
+                    img_container = picture.find('img')
+                    img = img_container.get('src')
         except Exception as e:
             print(e)
 
